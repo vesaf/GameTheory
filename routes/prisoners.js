@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
-var exec = require('child_process').exec;
 var path = require('path')
 var pairingFinal = require('./pair');
 

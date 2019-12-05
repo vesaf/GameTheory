@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
-var exec = require('child_process').exec;
 var pairPlayers = require('./pair');
 var status = require('./status').status;
 var path = require('path');
