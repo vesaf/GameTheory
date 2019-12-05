@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Theory</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+    <script src = "javascripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/prisoners.js"></script>
+    <script type="text/javascript" src="javascripts/status.js"></script>
+    <meta 
+    name='viewport' 
+    content='width=device-width, initial-scale=1.0' />
+</head>
+<body>
+    <div class="gameContainer">
+        <h2 id="playerType"></h2>
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th colspan="2">Player 2</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>A</th>
+                <th>B</th>
+            </tr>
+            <tr>
+                <th id="player1Label" rowspan="2">Player 1</th>
+                <th>A</th>
+                <th id="box00">-4,-4</th>
+                <th id="box10">-1,-8</th>
+            </tr>
+            <tr>
+                <th>B</th>
+                <th id="box01">-8,-1</th>
+                <th id="box11">-2,-2</th>
+            </tr>
+        </table>
+        <button id="confessBtn">A</button>
+        <button id="denyBtn">B</button>
+        <p id="payoff"></p>
+    </div>
+</body>
+</html>

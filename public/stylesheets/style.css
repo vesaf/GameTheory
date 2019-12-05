@@ -1,0 +1,103 @@
+@font-face {
+    font-family: cubano;
+    src: url("../fonts/Cubano-Regular.otf") format("opentype");
+}
+
+h2 {
+    font-size: 1.3em;
+}
+
+h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#titleContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 725px;
+    padding: 50px;
+}
+
+button {
+    background-color: #ffffff;
+    color: #ff8a2b;
+    border-radius: 20px;
+    height: 50px;
+    width: 130px;
+    font-family: cubano;
+    font-size: 1em;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    margin: 0.5em 1.2em 0 1.3em;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+body {
+    background-color: #ff8a2b;
+    font-size: 26px;
+    color: #ffffff;
+    font-family: cubano;
+}
+
+#player1Label {
+    padding-right: 10px;
+}
+
+.gameContainer {
+    margin: auto;
+    width: 15.4em;
+    padding: 0 50px;
+}
+
+#playerType, #payoff, #statusTitle {
+    text-align: center;
+}
+
+#payoff {
+    text-align: center;
+}
+
+#dashboardContainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#statusManagementConatainer {
+    left: 435px;
+}
+
+.managementContainer {
+    margin: 50px;
+    width: 335px;
+    position: absolute;
+    display: inline-block;
+    top: 50px;
+}
+
+#connectedPlayers, #statusTitle {
+    margin-bottom: 5px;
+}
+
+#playerCount, #statusContent {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.playerManagementBtn {
+    width: 300px;
+    margin: 10px 17px;
+}

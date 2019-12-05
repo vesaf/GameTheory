@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Theory</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+    <script src = "javascripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/dashboard.js"></script>
+    <meta 
+    name='viewport' 
+    content='width=device-width, initial-scale=1.0' />
+</head>
+<body>
+    <div id="dashboardContainer">
+        <h1>Dashboard</h1>
+        <div class="managementContainer" id="playerManagementContainer">
+            <h2 id="connectedPlayers">Connected players:</h2>
+            <h2 id="playerCount">0</h2>
+            <button class="playerManagementBtn" id="pairBtn">Pair!</button>
+            <button class="playerManagementBtn" id="resetBtn">Reset</button>
+            <button class="playerManagementBtn" id="refreshStatusBtn">Refresh status</button>
+        </div>
+        <div  class="managementContainer" id="statusManagementConatainer">
+            <h2 id="statusTitle">Status:</h2>
+            <h2 id="statusContent">Gathering players</h2>
+        </div>
+    </div>
+
+</body>
+</html>
