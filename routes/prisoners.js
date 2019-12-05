@@ -8,10 +8,11 @@ var responses;
 router.get('/', function (req, res) {
   res = setHeaders(res);
   res.sendFile(path.resolve('./public/prisoners.html'));
-  responses = (pairingFinal.pairing);
+  responses = pairingFinal.pairing;
 });
 
-allEntered = true;
+// allEntered = true;
+var enteredCount = 0;
 router.post('/send', function (req, res) {
   res = setHeaders(res);
   data = req.body;
@@ -22,16 +23,18 @@ router.post('/send', function (req, res) {
     responses[data.pair].player2Outcome = data.response;
   }
   // console.log(responses);
-  allEnteredTest = true;
+  // allEnteredTest = true;
+  enteredCount = 0;
   for (var i = 0; i < responses.length; i++) {
     console.log(responses[i].player1Outcome);
     console.log(responses[i].player2Outcome);
-    if (responses[i].player1Outcome === undefined || responses[i].player2Outcome === undefined) {
-      allEnteredTest = false;
-      break;
+    if (responses[i].player1Outcome !== undefined && responses[i].player2Outcome !== undefined) {
+      // allEnteredTest = false;
+      enteredCount++;
+      // break;
     }
   }
-  allEntered = allEnteredTest;
+  // allEntered = allEnteredTest;
   console.log(responses);
   res.send();
 });
@@ -39,7 +42,7 @@ router.post('/send', function (req, res) {
 router.get('/status', function (req, res) {
   res = setHeaders(res);
   // console.log(allEntered);
-  res.send({allEntered: allEntered, responses: responses});
+  res.send({enteredCount: enteredCount, allEntered: enteredCount === responses.length, responses: responses});
 });
 
 // Helper function that sets the res object

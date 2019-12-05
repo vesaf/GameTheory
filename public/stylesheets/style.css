@@ -59,7 +59,7 @@ body {
     padding: 0 50px;
 }
 
-#playerType, #payoff, #statusTitle {
+#playerType, #payoff, #statusTitle, #pairCountLabel {
     text-align: center;
 }
 
@@ -75,8 +75,12 @@ body {
     left: 0;
 }
 
-#statusManagementConatainer {
+#statusManagementContainer {
     left: 435px;
+}
+
+#resultsContainer {
+    left: 820px;
 }
 
 .managementContainer {
@@ -87,11 +91,11 @@ body {
     top: 50px;
 }
 
-#connectedPlayers, #statusTitle {
+#connectedPlayers, #statusTitle, #pairCountLabel {
     margin-bottom: 5px;
 }
 
-#playerCount, #statusContent {
+#playerCount, #statusContent, #pairCountContent {
     text-align: center;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -100,4 +104,8 @@ body {
 .playerManagementBtn {
     width: 300px;
     margin: 10px 17px;
+}
+
+#resultsTable th {
+    padding: 10px;
 }

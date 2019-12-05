@@ -6,7 +6,6 @@ function pairPlayers(playerData, pairing, callback) {
       let player2 = playerData.residualPlayers[player2Index];
       playerData.residualPlayers.splice(player2Index, 1);
       playerData.residualPlayers.shift();
-      let rand = Math.random;
       if (Math.random() < 0.5) {
         pairing.push({player1: player1, player2: player2});
       }

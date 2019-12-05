@@ -43,8 +43,9 @@ router.get('/pair', function (req, res) {
   playerData.residualPlayers = playerData.players.slice();
   pairPlayers.executePair(playerData, function (pairing) {
     var treatRand = Math.random() < 0.5;
+    console.log(treatRand);
     for (let i = 0; i < pairing.length; i++) {
-      pairing[i].treatment = (i%2 == 0) * treatRand;
+      pairing[i].treatment = (i%2 == treatRand);
       console.log(JSON.stringify(pairing[i]));
     }
     res = setHeaders(res);
