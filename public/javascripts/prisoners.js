@@ -12,6 +12,10 @@ window.addEventListener("load", function() {
         }
     }
     document.getElementById("playerType").innerHTML = "You are player " + (playerType + 1).toString();
+    if (playerType == 1) {
+        document.getElementById("confessBtn").innerHTML = "C";
+        document.getElementById("denyBtn").innerHTML = "D";
+    }
     document.getElementById("confessBtn").addEventListener("click", function(e) {sendResponse(e, 0)}, false);
     document.getElementById("denyBtn").addEventListener("click", function(e) {sendResponse(e, 1)}, false);
 

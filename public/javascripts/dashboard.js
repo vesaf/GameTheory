@@ -65,8 +65,8 @@ window.addEventListener("load", function() {
                                                 </tr>
                                                 <tr>
                                                     <th>
-                                                    <th>A (` + (100-control2B) + `%)</th>
-                                                    <th>B (` + control2B + `%)</th>
+                                                    <th>C (` + (100-control2B) + `%)</th>
+                                                    <th>D (` + control2B + `%)</th>
                                                 </tr>
                                                 <tr>
                                                     <th>A (` + (100-control1B) + `%)</th>
@@ -89,8 +89,8 @@ window.addEventListener("load", function() {
                                                 </tr>
                                                 <tr>
                                                     <th>
-                                                    <th>A (` + (100-treatment2B) + `%)</th>
-                                                    <th>B (` + treatment2B + `%)</th>
+                                                    <th>C (` + (100-treatment2B) + `%)</th>
+                                                    <th>D (` + treatment2B + `%)</th>
                                                 </tr>
                                                 <tr>
                                                     <th>A (` + (100-treatment1B) + `%)</th>
