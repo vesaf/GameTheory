@@ -94,7 +94,7 @@ window.addEventListener("load", function() {
                                                 </tr>
                                                 <tr>
                                                     <th>A (` + (100-treatment1B) + `%)</th>
-                                                    <th>80,40</th>
+                                                    <th>320,40</th>
                                                     <th>40,80</th>
                                                 </tr>
                                                 <tr>
