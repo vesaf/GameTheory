@@ -24,6 +24,8 @@ function executePair(playerData, callback) {
     console.log(playerData);
     pairPlayers(playerData, [], function (pairing) {
         module.exports.pairing = pairing;
+        module.exports.responses = pairing;
+        module.exports.enteredCount = 0;
         callback(pairing);
     });
 }

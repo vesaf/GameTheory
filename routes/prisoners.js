@@ -3,46 +3,54 @@ var router = express.Router();
 var path = require('path')
 var pairingFinal = require('./pair');
 
-var responses;
+// var pairingFinal.responses;
 /* GET home page. */
 router.get('/', function (req, res) {
+  // pairingFinal.enteredCount = 0;
   res = setHeaders(res);
   res.sendFile(path.resolve('./public/prisoners.html'));
-  responses = pairingFinal.pairing;
+  // pairingFinal.responses = pairingFinal.pairing;
 });
 
+// router.post('/prepare', function (req, res) {
+//   pairingFinal.responses = pairingFinal.pairing;
+//   pairingFinal.enteredCount = 0;
+//   res = setHeaders(res);
+//   res.end();
+// });
+
 // allEntered = true;
-var enteredCount = 0;
+// var pairingFinal.enteredCount = 0;
 router.post('/send', function (req, res) {
   res = setHeaders(res);
   data = req.body;
   if (data.playerType == 0) {
-    responses[data.pair].player1Outcome = data.response;
+    pairingFinal.responses[data.pair].player1Outcome = data.response;
   }
   else {
-    responses[data.pair].player2Outcome = data.response;
+    pairingFinal.responses[data.pair].player2Outcome = data.response;
   }
-  // console.log(responses);
+  // console.log(pairingFinal.responses);
   // allEnteredTest = true;
-  enteredCount = 0;
-  for (var i = 0; i < responses.length; i++) {
-    console.log(responses[i].player1Outcome);
-    console.log(responses[i].player2Outcome);
-    if (responses[i].player1Outcome !== undefined && responses[i].player2Outcome !== undefined) {
+  pairingFinal.enteredCount = 0;
+  for (var i = 0; i < pairingFinal.responses.length; i++) {
+    console.log(pairingFinal.responses[i].player1Outcome);
+    console.log(pairingFinal.responses[i].player2Outcome);
+    if (pairingFinal.responses[i].player1Outcome !== undefined && pairingFinal.responses[i].player2Outcome !== undefined) {
       // allEnteredTest = false;
-      enteredCount++;
+      pairingFinal.enteredCount++;
       // break;
     }
   }
   // allEntered = allEnteredTest;
-  console.log(responses);
+  console.log(pairingFinal.responses);
   res.send();
 });
 
 router.get('/status', function (req, res) {
   res = setHeaders(res);
   // console.log(allEntered);
-  res.send({enteredCount: enteredCount, allEntered: enteredCount === responses.length, responses: responses});
+  res.send({enteredCount: pairingFinal.enteredCount, allEntered: pairingFinal.enteredCount === pairingFinal.responses.length, responses: pairingFinal.responses});
 });
 
 // Helper function that sets the res object

@@ -29,45 +29,84 @@ window.addEventListener("load", function() {
                         $.ajax({
                             url: "/prisoners/status",
                             success: function (data) {
-                                // TODO: Continue tomorrow
-                                // TODO: Why not work twice in a row
-                                // TODO: Have to reset server after reset after starting game
-                                // if (document.getElementById("resultsContainer")) {
-                                //     document.getElementById("dashboardContainer").removeChild(document.getElementById("resultsContainer"));
-                                // }
-                                // var treatment1A = 0;
-                                // var control1A = 0;
+                                if (data.enteredCount > 0) {
+                                    var control1B = 0, control2B = 0, treatment1B = 0, treatment2B = 0;
+                                    var treatmentCount = 0, controlCount = 0
 
-                                // for (let i = 0; i < data.responses.length; i++) {
-                                //     if (data.responses[i].player1Outcome !== undefined && data.responses[i].player2Outcome !== undefined) {
-                                //         if (data.responses[i].treatment && data.responses[i].player1Outcome) {
-
-                                //         }
-                                //     }
-                                // }
-                                document.getElementById("dashboardContainer").innerHTML += `
-                                <div class="managementContainer" id="resultsContainer">
-                                    <h2 id="statusTitle">Results:</h2>
-                                    <table id="resultsTable">
-                                        <tbody>
-                                            <tr>
-                                                <th>
-                                                </th><th>Control:</th>
-                                                <th>Treatment:</th>
-                                            </tr>
-                                            <tr>
-                                                <th>A</th>
-                                                <th id="controlA">40%</th>
-                                                <th id="treatmentA">55%</th>
-                                            </tr>
-                                            <tr>
-                                                <th>B</th>
-                                                <th id="controlB">60%</th>
-                                                <th id="treatmentB">45%</th>
-                                            </tr>
-                                        </tbody>
-                                    </table>       
-                                </div>`;
+                                    for (let i = 0; i < data.responses.length; i++) {
+                                        var response = data.responses[i];
+                                        console.log("treatment bool:", typeof(response.treatment));
+                                        if (response.treatment) {
+                                            treatment1B += parseInt(response.player1Outcome);
+                                            treatment2B += parseInt(response.player2Outcome);
+                                            treatmentCount++;
+                                        }
+                                        else {
+                                            control1B += parseInt(response.player1Outcome);
+                                            control2B += parseInt(response.player2Outcome);
+                                            controlCount++;
+                                        }
+                                    }
+                                    control1B = Math.round(100*(control1B/controlCount));
+                                    control2B = Math.round(100*(control2B/controlCount));
+                                    treatment1B = Math.round(100*(treatment1B/treatmentCount));
+                                    treatment2B = Math.round(100*(treatment2B/treatmentCount));
+                                    var dashboardContainer = document.createElement("DIV");
+                                    dashboardContainer.className = "managementContainer";
+                                    dashboardContainer.id = "resultsContainer";
+                                    dashboardContainer.innerHTML += `
+                                        <h2 id="statusTitle">Results:</h2>
+                                        <table class= "resultsTable" id="controlResultsTable">
+                                            <tbody>
+                                                <tr>
+                                                    <th>
+                                                    </th><th>Control:</th>
+                                                    <th></th>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                    <th>A (` + (100-control2B) + `%)</th>
+                                                    <th>B (` + control2B + `%)</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>A (` + (100-control1B) + `%)</th>
+                                                    <th>80,40</th>
+                                                    <th>40,80</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>B (` + control1B + `%)</th>
+                                                    <th>40,80</th>
+                                                    <th>80,40</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class= "resultsTable" id="treatmentResultsTable">
+                                            <tbody>
+                                                <tr>
+                                                    <th>
+                                                    </th><th>Treatment:</th>
+                                                    <th></th>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                    <th>A (` + (100-treatment2B) + `%)</th>
+                                                    <th>B (` + treatment2B + `%)</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>A (` + (100-treatment1B) + `%)</th>
+                                                    <th>80,40</th>
+                                                    <th>40,80</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>B (` + treatment1B + `%)</th>
+                                                    <th>40,80</th>
+                                                    <th>80,40</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    `;
+                                    document.getElementById("dashboardContainer").appendChild(dashboardContainer);
+                                }
                             }
                         });
 
@@ -89,17 +128,12 @@ window.addEventListener("load", function() {
     });
 
     document.getElementById("resetBtn").addEventListener('click', function() {
+        console.log("reset");
         $.ajax({
             type: "POST",
             url: "/reset",
             success: function(data, err) {
                 location.reload();
-                // document.getElementById("statusContent").innerHTML = "Gathering players";
-                // document.getElementById("statusManagementContainer").removeChild(document.getElementById("pairCountLabel"));
-                // document.getElementById("statusManagementContainer").removeChild(document.getElementById("pairCountContent"));
-                // document.getElementById("statusManagementContainer").removeChild(document.getElementById("showResultsBtn"));
-                // document.getElementById("dashboardContainer").removeChild(document.getElementById("resultsContainer"));
-                // clearInterval(pairStatusInterval);
             },
             error: function () {
                 alert("Error, could not reset.");

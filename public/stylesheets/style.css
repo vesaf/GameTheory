@@ -106,6 +106,7 @@ body {
     margin: 10px 17px;
 }
 
-#resultsTable th {
+.resultsTable th {
     padding: 10px;
+    min-width: 104px;
 }
